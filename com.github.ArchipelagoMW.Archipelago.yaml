@@ -2,11 +2,11 @@ id: com.github.ArchipelagoMW.Archipelago
 runtime: org.freedesktop.Platform
 runtime-version: '23.08'
 sdk: org.freedesktop.Sdk
-#command: archipelago-launcher
 command: archipelago
 finish-args:
-  - --socket=x11
   - --device=dri
+  - --filesystem=xdg-download:ro
+  - --socket=x11
 modules:
   - name: archipelago
     buildsystem: simple
