@@ -5,7 +5,8 @@ sdk: org.freedesktop.Sdk
 command: archipelago
 finish-args:
   - --device=dri
-  - --filesystem=xdg-download:ro
+  - --filesystem=home
+  - --share=network
   - --socket=x11
 modules:
   - name: archipelago
@@ -15,14 +16,10 @@ modules:
       - cp -r Archipelago /app/
       - install -Dm755 archipelago.sh /app/bin/archipelago
     sources:
-      - type: script
-        dest-filename: archipelago.sh
-        commands:
-          - cd /app/Archipelago
-          - ./ArchipelagoLauncher
       - type: archive
         url: https://github.com/ArchipelagoMW/Archipelago/releases/download/0.5.1/Archipelago_0.5.1.Hotfix1_linux-x86_64.tar.gz
         sha256: e84a127c6fe0deb940bc0b64212eff08a0cf2a97c04222d87f57dba5b0e0d5e6
         dest-filename: archipelago.tar.gz
         strip-components: 0
-
+      - type: file
+        path: archipelago.sh
